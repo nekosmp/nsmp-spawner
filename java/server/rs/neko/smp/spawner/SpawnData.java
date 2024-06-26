@@ -43,4 +43,13 @@ public class SpawnData {
       return json;
     }
   }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof SpawnData other) {
+      return this.spawnX == other.spawnX && this.spawnZ == other.spawnZ;
+    }
+    return false;
+  }
+
 }
