@@ -4,7 +4,12 @@
 
 package rs.neko.smp.spawner;
 
+import static net.minecraft.server.command.CommandManager.literal;
+
+import java.util.UUID;
+
 import net.fabricmc.api.DedicatedServerModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,5 +20,13 @@ public class Spawner implements DedicatedServerModInitializer {
   @Override
   public void onInitializeServer() {
     LOGGER.info("Initializing NSMP Spawner");
+    CommandRegistrationCallback.EVENT.register((d, r, e) -> {
+      d.register(literal("nsmp-spawner-test").requires(s -> s.hasPermissionLevel(2)).executes(ctx -> {
+        for (int i = 0; i < 1024; i++) {
+          SpawnCache.getSpawnData(UUID.randomUUID());
+        }
+        return 1;
+      }));
+    });
   }
 }

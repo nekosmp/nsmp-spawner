@@ -64,6 +64,7 @@ public class SpawnCache {
 
     int step = 1;
     while (available.isEmpty()) {
+      Spawner.LOGGER.info("Populating with step " + step);
       populate(available, step);
       available.removeAll(getData().values());
       step *= 2;
@@ -73,8 +74,8 @@ public class SpawnCache {
   }
 
   private static void populate(ObjectArrayList<SpawnData> avail, int step) {
-    for (int x = -6144; x <= 6144; x += 1024 / step) {
-      for (int z = -6144; z <= 6144; z += 1024 / step) {
+    for (int x = -6144; x <= 6144; x += 1536 / step) {
+      for (int z = -6144; z <= 6144; z += 1536 / step) {
         if (Math.sqrt(x * x + z * z) <= 6144) {
           SpawnData data = new SpawnData();
           data.spawnX = x;
