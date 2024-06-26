@@ -17,6 +17,9 @@
       "rs.neko.smp.spawner.Spawner"
     ]
   },
+  "mixins": [
+    "nsmp-spawner.mixins.json"
+  ],
   "depends": {
     "fabric-api": ">=${fabric_version}",
     "fabricloader": ">=${loader_version}",
