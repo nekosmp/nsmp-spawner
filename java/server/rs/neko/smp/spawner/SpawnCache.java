@@ -24,6 +24,7 @@ public class SpawnCache {
       .registerTypeAdapter(SpawnData.class, new SpawnData.Serde()).create();
 
   private static Object2ObjectOpenHashMap<UUID, SpawnData> data = null;
+
   public static Object2ObjectOpenHashMap<UUID, SpawnData> getData() {
     if (data == null) {
       loadData();
@@ -33,11 +34,13 @@ public class SpawnCache {
   }
 
   private static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("nsmp-spawner.json");
+
   public static void loadData() {
     String json = "{}";
     try {
       json = Files.readString(PATH);
-      data = JsonHelper.deserialize(GSON, json, new TypeToken<Object2ObjectOpenHashMap<UUID, SpawnData>>() {});
+      data = JsonHelper.deserialize(GSON, json, new TypeToken<Object2ObjectOpenHashMap<UUID, SpawnData>>() {
+      });
     } catch (Exception ex) {
       Spawner.LOGGER.warn("Failed to load json from {}: {}", PATH, ex);
       data = new Object2ObjectOpenHashMap<UUID, SpawnData>();
@@ -52,7 +55,6 @@ public class SpawnCache {
     }
   }
 
-
   private static ObjectArrayList<SpawnData> available = null;
 
   public static ObjectArrayList<SpawnData> getAvailable() {
@@ -64,15 +66,15 @@ public class SpawnCache {
     while (available.isEmpty()) {
       populate(available, step);
       available.removeAll(getData().values());
-      step*=2;
+      step *= 2;
     }
 
     return available;
   }
 
   private static void populate(ObjectArrayList<SpawnData> avail, int step) {
-    for (int x = -6144; x <= 6144; x+=1024 / step) {
-      for (int z = -6144; z <= 6144; z+=1024 / step) {
+    for (int x = -6144; x <= 6144; x += 1024 / step) {
+      for (int z = -6144; z <= 6144; z += 1024 / step) {
         if (Math.sqrt(x * x + z * z) <= 6144) {
           SpawnData data = new SpawnData();
           data.spawnX = x;
@@ -82,7 +84,6 @@ public class SpawnCache {
       }
     }
   }
-
 
   public static SpawnData getSpawnData(UUID uuid) {
     if (!getData().containsKey(uuid)) {
