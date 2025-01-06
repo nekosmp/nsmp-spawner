@@ -2,7 +2,7 @@
 //
 // This project is dual licensed under MIT and Apache.
 
-package rs.neko.smp.spawner.mixin;
+package dev.atakku.fsmp.spawner.mixin;
 
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import rs.neko.smp.spawner.SpawnCache;
+import dev.atakku.fsmp.spawner.SpawnCache;
 
 @Mixin(ServerPlayerEntity.class)
 public class MixinServerPlayerEntity {

@@ -2,7 +2,7 @@
 //
 // This project is dual licensed under MIT and Apache.
 
-package rs.neko.smp.spawner;
+package dev.atakku.fsmp.spawner;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,7 +33,7 @@ public class SpawnCache {
     return data;
   }
 
-  private static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("nsmp-spawner.json");
+  private static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("fsmp-spawner.json");
 
   public static void loadData() {
     String json = "{}";

@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "rs.neko.smp.spawner.mixin",
+  "package": "dev.atakku.fsmp.spawner.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [],
   "mixins": [

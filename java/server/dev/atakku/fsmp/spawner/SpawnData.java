@@ -2,7 +2,7 @@
 //
 // This project is dual licensed under MIT and Apache.
 
-package rs.neko.smp.spawner;
+package dev.atakku.fsmp.spawner;
 
 import java.lang.reflect.Type;
 
